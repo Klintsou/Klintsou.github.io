@@ -1,5 +1,5 @@
 function addition(par1, par2) {
-  return +par1 + +par2;
+  return par1 + par2;
 }
 function minus(par1, par2) {
   return par1 - par2;
@@ -13,7 +13,7 @@ function division(par1, par2) {
 function integerDivision(par1, par2) {
   return (par1 - par1 % par2) / par2;
 }
-console.log(addition(1, 3));
+console.log(addition(1.01, 3.27));
 console.log(minus(50, 30));
 console.log(multiplication(5, 3));
 console.log(division(80, 10));
