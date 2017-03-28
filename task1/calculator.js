@@ -25,4 +25,3 @@
  +console.log(multiplication(10, false, 10));
  +console.log(multiplication());
  +console.log(integerDivision('bbb', 'aaa'));
- 
