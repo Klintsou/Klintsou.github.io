@@ -1,49 +1,23 @@
 function isArrayFirst(arr) {
-  return Array.isArray(arr);
+  return arr instanceof Array;
 }
 
 function isArraySecond(arr) {
-  return (arr instanceof Array);
-}
-
-function isArrayThird(arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 }
 
-function range(arg1, arg2, arg3) {
-  if (arg1 === undefined || (Math.sign(arg1) != 1 && arg2 === undefined)) {
-    return [];
+function range(start, end, step) {
+  var arr = [];
+  if (end == undefined || end == null) {
+    end = start;
+    start = 0;
   }
-  var arr;
-  var i = 0;
-  if (arg2 === undefined) {
-    arr = [arg1];
-    for (i; i < arg1; i++) {
-      arr[i] = i;
-    }
-    return arr;
+  if (step == undefined || step == null) {
+    step = 1;
   }
-  var value = arg1;
-  if (arg3 === undefined) {
-    var count = Math.abs(arg2 - arg1);
-    arr = [count];
-      for (i; i < count; i++) {
-        arr[i] = arg1 > arg2 ? value-- : value++;
-      }
-    return arr;
-  }
-  arr = [];
-  var step = Math.abs(arg3);
-  if (arg1 < arg2) {
-    while (value <= arg2) {
-      arr[i++] = value;
-      value += step;
-    }
-  } else {
-    while (value >= arg2) {
-      arr[i++] = value;
-      value -= step;
-    }
+  while (step > 0 ? end > start : end < start) {
+    arr.push(start);
+    start += step;
   }
   return arr;
 }
@@ -60,7 +34,7 @@ function compactFirst(arr) {
 
 function compactSecond(arr) {
   return arr.filter(function(value){
-    return value ? true : false;
+    return value;
   });
 }
 
@@ -71,11 +45,13 @@ function sumFirst(arr) {
   }
   return sum;
 }
+
 function sumSecond(arr) {
   return arr.reduce(function (a, b) {
     return a + b;
   });
 }
+
 function unique(arr) {
   var newArray = []; 
   for(var i = 0; i < arr.length; i++) 
@@ -95,10 +71,8 @@ function excludeLast(arr, count) {
   if (count === undefined) {
     count = 1;
   }
-  for (var i = 0; i < count; i++) {
-    arr.pop();
-  }
-  return arr;
+  var excludeArr = arr.slice(0, arr.length - count); 
+  return excludeArr;
 }
 
 //Array true
@@ -115,29 +89,32 @@ var i = true;
 var j = false;
 console.log("---Check isArray---");
 console.log("---------------------------------------------");
-console.log("first method:second method:third method");
+console.log("first method:second method");
 console.log("---------------------------------------------");
-console.log(isArrayFirst(a) + ":" + isArraySecond(a) + ":" + isArrayThird(a));
-console.log(isArrayFirst(b) + ":" + isArraySecond(b) + ":" + isArrayThird(b));
-console.log(isArrayFirst(c) + ":" + isArraySecond(c) + ":" + isArrayThird(c));
-console.log(isArrayFirst(d) + ":" + isArraySecond(d) + ":" + isArrayThird(d));
-console.log(isArrayFirst(e) + ":" + isArraySecond(e) + ":" + isArrayThird(e));
-console.log(isArrayFirst(f) + ":" + isArraySecond(f) + ":" + isArrayThird(f));
-console.log(isArrayFirst(g) + ":" + isArraySecond(g) + ":" + isArrayThird(g));
-console.log(isArrayFirst(h) + ":" + isArraySecond(h) + ":" + isArrayThird(h));
-console.log(isArrayFirst(i) + ":" + isArraySecond(i) + ":" + isArrayThird(i));
-console.log(isArrayFirst(j) + ":" + isArraySecond(j) + ":" + isArrayThird(j));
+console.log(isArrayFirst(a) + ":" + isArraySecond(a));
+console.log(isArrayFirst(b) + ":" + isArraySecond(b));
+console.log(isArrayFirst(c) + ":" + isArraySecond(c));
+console.log(isArrayFirst(d) + ":" + isArraySecond(d));
+console.log(isArrayFirst(e) + ":" + isArraySecond(e));
+console.log(isArrayFirst(f) + ":" + isArraySecond(f));
+console.log(isArrayFirst(g) + ":" + isArraySecond(g));
+console.log(isArrayFirst(h) + ":" + isArraySecond(h));
+console.log(isArrayFirst(i) + ":" + isArraySecond(i));
+console.log(isArrayFirst(j) + ":" + isArraySecond(j));
 console.log("---------------------------------------------");
-console.log("---Check range---");
-console.log("range(5): " + range(5));
-console.log("range(-10): " + range(-10));
-console.log("range('b'): " + range('b'));
 console.log("range(10): " + range(10));
-console.log("range(1,5): " + range(1, 5));
-console.log("range(1,-5): " + range(1, -5));
-console.log("range(1,10,2): " + range(1,10,2));
-console.log("range(1,-10,2): " + range(1,-10,2));
-console.log("range(10,-5,-3): " + range(10,-5,-3));
+console.log("range(1, 10): " + range(1, 10));
+console.log("range(1, 10, 3): " + range(1, 10, 3));
+console.log("range(10, null, 3): " + range(10, null, 3));
+console.log("range(10, null): " + range(10, null));
+console.log("range(-2, -5): " + range(-2, -5));
+console.log("range(-5, -2): " + range(-5, -2));
+console.log("range(-5, -2, 2): " + range(-5, -2, 2));
+console.log("range(-5, -2, -2): " + range(-5, -2, -2));
+console.log("range(-5, null, 2): " + range(-5, null, 2));
+console.log("range(-5, null, -2): " + range(-5, null, -2));
+console.log("range(-10, -20, -5): " + range(-10, -20, -5));
+console.log("range(-20, -10, -5): " + range(-20, -10, -5));
 console.log("---Check compact---");
 var compactTest = [0, 1, 2, undefined, 3, null, 4, false, NaN, " ", 5, , "text", 6, , 7];
 console.log("compactFirst(" + compactTest + "): " + compactFirst(compactTest));
