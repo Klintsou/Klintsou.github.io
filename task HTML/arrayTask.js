@@ -68,11 +68,14 @@ function last(arr) {
 }
 
 function excludeLast(arr, count) {
+  var newArray = arr;
   if (count === undefined) {
     count = 1;
   }
-  var excludeArr = arr.slice(0, arr.length - count); 
-  return excludeArr;
+  for (var i = 0; i < count; i++) {
+    newArray.pop();
+  }
+  return newArray;
 }
 
 //Array true
