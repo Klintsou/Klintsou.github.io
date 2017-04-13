@@ -23,16 +23,15 @@ function binarySearchRec(arr, key, first, last) {
   }
   var middle = Math.floor((first + last) / 2);
   if  (key < arr[middle]) {
-    return binarySearch(arr, key, first, middle - 1);
+    return binarySearchRec(arr, key, first, middle - 1);
   } else if (key > arr[middle]) {
-    return binarySearch(arr, key, middle + 1, last);
+    return binarySearchRec(arr, key, middle + 1, last);
   }
   return middle;
 }
 
 var arr = [0,5,6,10,11,15,17,21,33,35,48,50];
 var arr1 = [-50,-40,-35,-33,-30,-15,-5, 1,2,3,6];
-var arr2 = [];
 var a = 21;
 var b = 0;
 var c = 50;
