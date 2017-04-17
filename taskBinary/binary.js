@@ -15,19 +15,20 @@ function binarySearch(arr, key) {
   return -1;
 }
 
-function binarySearchRec(arr, key, first, last) {
-  var first = first || 0;
-  var last = last || arr.length - 1;
-  if (first > last) {
-    return -1;
+function binarySearchRec(arr, key) {
+  function search(first, last) {
+    if (first > last) {
+      return -1;
+    }
+    var middle = Math.floor((first + last) / 2);
+    if (key < arr[middle]) {
+      return search(first, middle - 1);
+    } else if (key > arr[middle]) {
+      return search(middle + 1, last);
+    }
+    return middle;
   }
-  var middle = Math.floor((first + last) / 2);
-  if  (key < arr[middle]) {
-    return binarySearchRec(arr, key, first, middle - 1);
-  } else if (key > arr[middle]) {
-    return binarySearchRec(arr, key, middle + 1, last);
-  }
-  return middle;
+  return search(0, arr.length-1);
 }
 
 var arr = [0,5,6,10,11,15,17,21,33,35,48,50];
