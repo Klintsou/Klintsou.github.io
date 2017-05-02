@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <script type="text/javascript" src="./js/loader.js"></script>
+  <script type="text/javascript" src="./js/album-info.js"></script>
+  <script type="text/javascript" src="./js/top-artists.js"></script>
+  <script type="text/javascript" src="./js/artist-info.js"></script>
+  <script type="text/javascript" src="./js/artist-search.js"></script>
+  <script type="text/javascript">
+    var albumInfo = new AlbumInfo();
+    var topArtists = new TopArtists();
+    var artistInfo = new ArtistInfo();
+    var artistSearch = new Searcher();
+    albumInfo.getInfo('skillet','awake');
+    topArtists.getTopArtists();
+    artistInfo.getInfo('John L. Cooper');
+    artistSearch.search('cher');
+  </script>
+</body>
+</html>
